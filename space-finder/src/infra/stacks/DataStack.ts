@@ -29,7 +29,6 @@ export class DataStack extends Stack {
           allowedHeaders: ['*'],
         },
       ],
-      // accessControl: BucketAccessControl.PUBLIC_READ, // currently not working,
       objectOwnership: ObjectOwnership.OBJECT_WRITER,
       blockPublicAccess: {
         blockPublicAcls: false,

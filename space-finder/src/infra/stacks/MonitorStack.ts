@@ -12,17 +12,10 @@ export class MonitorStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const webHookLambda = new NodejsFunction(this, 'webHookLambda', {
-      runtime: Runtime.NODEJS_18_X,
-      handler: 'handler',
-      entry: join(__dirname, '..', '..', 'services', 'monitor', 'handler.ts'),
-    })
-
     const alarmTopic = new Topic(this, 'AlarmTopic', {
       displayName: 'AlarmTopic',
       topicName: 'AlarmTopic',
     })
-    alarmTopic.addSubscription(new LambdaSubscription(webHookLambda))
 
     const spacesApi4xxAlarm = new Alarm(this, 'spacesApi4xxAlarm', {
       metric: new Metric({

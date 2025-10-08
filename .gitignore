@@ -26,3 +26,4 @@ dist-ssr
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+space-finder/node_modules/*
